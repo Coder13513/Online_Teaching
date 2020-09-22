@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render
-from .serializer import RegisterSerializer,LoginSerializer,RegisterSerializerBySuperUser
+from .serializers import RegisterSerializer,LoginSerializer,RegisterSerializerBySuperUser
 from rest_framework import generics,mixins,status
 from rest_framework.response import Response
 from .models import User
@@ -99,7 +99,8 @@ class LoginWithTokenAuthenticationAPIView(generics.GenericAPIView):
 
 class RegisterAPIView(generics.CreateAPIView):
      queryset               =   User.objects.all()
-     permission_classes     =   [NonRegisteredUserOnly]
+    #  permission_classes     =   [NonRegisteredUserOnly]
+     permission_classes     =   []
      authentication_classes =   []
      serializer_class       =   RegisterSerializer
 

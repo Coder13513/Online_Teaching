@@ -6,19 +6,19 @@ from student.models import Student
 
 class Assignment(models.Model):
     title = models.CharField(max_length=50)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE) 
+
 
     def __str__(self):
         return self.title
 
 
-class GradedAssignment(models.Model):
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    assignment = models.ForeignKey(Assignment, on_delete=models.SET_NULL, blank=True, null=True)
-    grade = models.FloatField()
+class Question(models.Model):
+    question = models.CharField(max_length=288)
 
+ 
     def __str__(self):
-        return self.student.username
+        return self.question
 
 
 class Choice(models.Model):
@@ -28,12 +28,15 @@ class Choice(models.Model):
         return self.title
 
 
-class Question(models.Model):
-    question = models.CharField(max_length=200)
+
+class Quiz(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE,  blank=True, null=False)
     choices = models.ManyToManyField(Choice)
     answer = models.ForeignKey(Choice, on_delete=models.CASCADE, related_name='answer', blank=True, null=True)
-    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE, related_name='questions', blank=True, null=True)
-    order = models.SmallIntegerField()
+    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE, related_name='assignment', blank=True, null=True)
+
+    # def __str__(self):
+    #     return self.question
 
     def __str__(self):
-        return self.question
+        return F"{self.assignment}"

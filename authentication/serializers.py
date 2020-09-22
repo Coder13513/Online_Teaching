@@ -10,7 +10,7 @@ from rest_framework_jwt.settings import api_settings
 jwt_payload_handler             = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler              = api_settings.JWT_ENCODE_HANDLER
 jwt_payload_response_handler    = api_settings.JWT_RESPONSE_PAYLOAD_HANDLER
-expire_delta                    = settings.JWT_AUTH['JWT_REFRESH_EXPIRATION_DELTA']
+# expire_delta                    = settings.JWT_AUTH['JWT_REFRESH_EXPIRATION_DELTA']
 
 
 
