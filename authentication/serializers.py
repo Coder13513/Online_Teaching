@@ -47,17 +47,16 @@ class RegisterSerializer(serializers.ModelSerializer):
         del validated_data['confirm_password']
         return User.objects.create_user(**validated_data)
 
-    def do_password_match(self,password1,password2):
-        return password1==password2
+    def do_password_match(self,password,confirm_password):
+        return password==confirm_password
 
 
 
 
 class LoginSerializer(serializers.Serializer):
     username    =   serializers.CharField(max_length=120)
-    password    =   serializers.CharField(
-        style={'input_type':'password'},
-        max_length=128, min_length=6, write_only=True, )
+    password    =   serializers.CharField(style={'input_type':'password'},max_length=128, min_length=6, write_only=True, )
+    role        =   serializers.CharField(max_length=200)
 
 
 class RegisterSerializerBySuperUser(serializers.ModelSerializer):

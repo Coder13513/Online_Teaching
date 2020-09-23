@@ -8,6 +8,10 @@ class Teacher(models.Model):
     id=models.AutoField(primary_key=True)
     User=models.OneToOneField(User,on_delete=models.CASCADE)
     gender=models.CharField(max_length=255)
+    phone_Number=models.CharField(max_length=120,null=True,blank=True)
+    address=models.CharField(max_length=120,null=True,blank=True) 
+    state=models.CharField(max_length=120,null=True,blank=True)
+    country=models.CharField(max_length=120,null=True,blank=True)
     # class_assigned=models.ForeignKey(Class,on_delete=models.DO_NOTHING) 
     # subject_assigned=models.ForeignKey(Subject,on_delete=models.DO_NOTHING)   
   

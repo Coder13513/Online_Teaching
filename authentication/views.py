@@ -21,7 +21,7 @@ jwt_payload_response_handler    = api_settings.JWT_RESPONSE_PAYLOAD_HANDLER
 
 
 class LoginAPIView(generics.GenericAPIView):
-    serializer_class    =       LoginSerializer
+    serializer_class       =       LoginSerializer
     permission_classes     =   [NonRegisteredUserOnly]
     authentication_classes =   []
 
@@ -42,8 +42,10 @@ class LoginAPIView(generics.GenericAPIView):
         response = {
         "data": {
             "message": "Your login information is invalid",
-            "status": "invalid"
-        }
+            "status": "invalid",
+
+                
+               }
     }
         return Response(response, status=status.HTTP_200_OK)
 
@@ -99,8 +101,8 @@ class LoginWithTokenAuthenticationAPIView(generics.GenericAPIView):
 
 class RegisterAPIView(generics.CreateAPIView):
      queryset               =   User.objects.all()
-    #  permission_classes     =   [NonRegisteredUserOnly]
-     permission_classes     =   []
+     permission_classes     =   [NonRegisteredUserOnly]
+    #  permission_classes     =   []
      authentication_classes =   []
      serializer_class       =   RegisterSerializer
 
