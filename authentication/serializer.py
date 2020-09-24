@@ -3,6 +3,7 @@ from .models import User
 from django.utils import timezone
 from django.conf import settings
 import datetime
+from rest_framework.authtoken.models import Token
 
 class RegisterSerializer(serializers.ModelSerializer):
     password                    =   serializers.CharField(style={'input_type':'password'},max_length=120,min_length=8,write_only=True)
@@ -21,13 +22,14 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self,validated_data):
         del validated_data['confirm_password']
+        # user= User.objects.create_user(**validated_data)
+        # return user
+        # token= Token.objects.get_or_create(user)
+        # return token
         return User.objects.create_user(**validated_data)
 
     def do_password_match(self,password1,password2):
         return password1==password2
-
-
-
 
 class LoginSerializer(serializers.Serializer):
     username    =   serializers.CharField(max_length=120)

@@ -58,15 +58,17 @@ class LoginWithTokenAuthenticationAPIView(generics.GenericAPIView):
         print(password)
         user        =   authenticate(username=username,password=password)
         print(user)
+        print(user.role)
         if user is not None:
             # login(user,request)
             #TOKEN STUFF
-            token, _ = Token.objects.get_or_create(user = user)
+            token, _= Token.objects.get_or_create(user = user)
+          
             #token_expire_handler will check, if the token is expired it will generate new one
             # is_expired, token = token_expire_handler(token)     # The implementation will be described further
 
-            return Response({ 
-                'token': token.key
+            return Response({ 'token': token.key,
+            'role':user.role
             }, status=status.HTTP_200_OK)
         response = {
         "data": {
