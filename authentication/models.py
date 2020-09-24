@@ -6,10 +6,9 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    user_choice     =   (('TEACHER','teacher'),('STUDENT','student'))
-    
+    user_choice     =(('TEACHER','teacher'),('STUDENT','student'))
     email           =   models.EmailField(unique=True,blank=False)
-    role            =   models.CharField(verbose_name='user role',choices=user_choice,max_length=20)
+    role            =   models.CharField(verbose_name='user role',choices=user_choice,max_length=20,default='STUDENT')
 
     @property
     def owner(self):

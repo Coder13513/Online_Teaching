@@ -40,11 +40,14 @@ INSTALLED_APPS = [
      # thirdpartyapp
     'rest_framework',
     'rest_framework.authtoken',
+   
     #local apps
     'authentication',
     'student',
     'teacher',
-    'assignment'
+    'assignment',
+    'classes',
+    'subject'
 ]
  
 MIDDLEWARE = [
@@ -88,11 +91,20 @@ DATABASES = {
     }
 }
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',  # <-- And here
-    ],
-}
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [ 
+#         'rest_framework.permissions.IsAuthenticated',
+#     ],
+#     "DEFAULT_PARSER_CLASSES": [
+#         "rest_framework.parsers.JSONParser", 
+#     ],
+#     "DEFAULT_AUTHENTICATION_CLASSES":  
+#     [                             
+#         "rest_framework.authentication.SessionAuthentication",      
+        
+#     ],
+# }
 
 
 # Password validation

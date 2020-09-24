@@ -2,7 +2,8 @@ from django.db import models
 from authentication.models import User
 
 # Create your models here.
-
+from classes.models import Classes
+from subject.models import Subject
 
 class Teacher(models.Model):
     id=models.AutoField(primary_key=True)
@@ -12,8 +13,8 @@ class Teacher(models.Model):
     address=models.CharField(max_length=120,null=True,blank=True) 
     state=models.CharField(max_length=120,null=True,blank=True)
     country=models.CharField(max_length=120,null=True,blank=True)
-    # class_assigned=models.ForeignKey(Class,on_delete=models.DO_NOTHING) 
-    # subject_assigned=models.ForeignKey(Subject,on_delete=models.DO_NOTHING)   
+    class_assigned=models.ManyToManyField(Classes) 
+    subject_assigned=models.ManyToManyField(Subject)   
   
 
 
