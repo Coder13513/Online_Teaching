@@ -8,10 +8,10 @@ from rest_framework.authtoken.models import Token
 class RegisterSerializer(serializers.ModelSerializer):
     password                    =   serializers.CharField(style={'input_type':'password'},max_length=120,min_length=8,write_only=True)
     confirm_password            =   serializers.CharField(style={'input_type':'password'},max_length=120,min_length=8,write_only=True)
-    
+    # role            =   models.CharField(verbose_name='user role',choices=user_choice,max_length=20,default='STUDENT')
     class Meta:
         model   =   User
-        fields  =   ['username','email','password','confirm_password']
+        fields  =   ['username','email','password','confirm_password','role']
 
     def validate(self,data):
         confirm_password    =   data['confirm_password']
