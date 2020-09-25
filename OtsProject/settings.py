@@ -45,9 +45,11 @@ INSTALLED_APPS = [
     'authentication',
     'student',
     'teacher',
-    'assignment',
+    # 'assignment',
     'classes',
-    'subject'
+    'subject',
+    'chapter',
+    'lecture'
 ]
  
 MIDDLEWARE = [

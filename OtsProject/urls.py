@@ -23,12 +23,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('authApi/',include('authentication.urls')),
-    # path('auth/api/',obtain_jwt_token),
-   
+    path('authApi/',include('authentication.urls')),     
     path('studentApi/',include('student.urls')),
     path('teacherApi/',include('teacher.urls')),
-    path('assignApi/',include('assignment.urls')),
+    path('subjectApi/',include('subject.urls')),  
+    path('chapterApi/',include('chapter.urls')),  
+    path('lectureApi/',include('lecture.urls')),
+    path('classApi/',include('classes.urls')),  
+    # path('assignApi/',include('assignment.urls')),
   ]
 #   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
